@@ -9,8 +9,11 @@ def read_cities(file_name):
 
       Alabama -> Alaska -> Arizona -> ... -> Wyoming -> Alabama.
     """
-    pass
-  
+    with open(file_name) as cities:
+        road_map = [tuple(element.split()) for element in cities]
+        return road_map
+
+
 def print_cities(road_map):
     """
     Prints a list of cities, along with their locations. 
