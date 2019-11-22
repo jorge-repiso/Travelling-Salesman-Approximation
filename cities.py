@@ -9,8 +9,8 @@ def read_cities(file_name):
 
       Alabama -> Alaska -> Arizona -> ... -> Wyoming -> Alabama.
     """
-    with open(file_name) as cities:
-        road_map = [tuple(element.split()) for element in cities]
+    with open(file_name) as road_map:
+        road_map = [tuple(element.rstrip().split("\t")) for element in road_map]
         return road_map
 
 
@@ -19,7 +19,10 @@ def print_cities(road_map):
     Prints a list of cities, along with their locations. 
     Print only one or two digits after the decimal point.
     """
-    pass
+    for item in road_map:
+        subindex_a = item[2].find(".") + 3
+        subindex_b = item[3].find(".") + 3
+        print(item[0], item[1], item[2][:subindex_a], item[3][:subindex_b])
 
 def compute_total_distance(road_map):
     """
