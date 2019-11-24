@@ -1,35 +1,41 @@
 def read_cities(file_name):
-    """
-    Read in the cities from the given `file_name`, and return 
-    them as a list of four-tuples: 
 
-      [(state, city, latitude, longitude), ...] 
-
-    Use this as your initial `road_map`, that is, the cycle 
-
-      Alabama -> Alaska -> Arizona -> ... -> Wyoming -> Alabama.
-    """
     with open(file_name) as road_map:
         road_map = [tuple(element.rstrip().split("\t")) for element in road_map]
+        print(road_map)
         return road_map
 
 
 def print_cities(road_map):
-    """
-    Prints a list of cities, along with their locations. 
-    Print only one or two digits after the decimal point.
-    """
+
     for item in road_map:
         subindex_a = item[2].find(".") + 3
         subindex_b = item[3].find(".") + 3
         print(item[0], item[1], item[2][:subindex_a], item[3][:subindex_b])
 
+
 def compute_total_distance(road_map):
-    """
-    Returns, as a floating point number, the sum of the distances of all 
-    the connections in the `road_map`. Remember that it's a cycle, so that 
-    (for example) in the initial `road_map`, Wyoming connects to Alabama...
-    """
+
+    from math import sqrt
+    distance = 0
+    count = 1
+
+    # Might want to raise Exception if roadmap is either empty or contains only one city
+
+    for city in road_map:
+        p1 = city[2]
+        p2 = city[3]
+        if city != road_map[-1]:
+            q1 = road_map[count][2]
+            q2 = road_map[count][3]
+        else:
+            q1 = road_map[0][2]
+            q2 = road_map[0][3]
+        distance = distance + sqrt(((p1-q1) ** 2) + ((p2-q2) ** 2))
+        count += 1
+
+    print(distance)
+    return(distance)
 
 
 def swap_cities(road_map, index1, index2):
