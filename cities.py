@@ -20,8 +20,6 @@ def compute_total_distance(road_map):
     distance = 0
     count = 1
 
-    # Might want to raise Exception if roadmap is either empty or contains only one city
-
     for city in road_map:
         p1 = city[2]
         p2 = city[3]

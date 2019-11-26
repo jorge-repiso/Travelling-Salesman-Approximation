@@ -22,9 +22,6 @@ def test_compute_total_distance():
     assert compute_total_distance(road_map2) == \
            pytest.approx(7.099 + 17.088 + 48.897 + 24.895, 0.01)
 
-    assert compute_total_distance(road_map3) == \
-           pytest.raises(Exception)
-
 
 
 def test_swap_cities():
