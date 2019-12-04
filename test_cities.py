@@ -37,19 +37,30 @@ def test_compute_total_distance():
 
 
 def test_swap_cities():
-    new_road_map1 = [("Kentucky", "Frankfort", 38.197274, -84.86311), \
+    b_road_map1 = [("Kentucky", "Frankfort", 38.197274, -84.86311), \
                      ("Delaware", "Dover", 39.161921, -75.526755), \
                      ("Minnesota", "Saint Paul", 44.95, -93.094), \
                      ('West Virginia', 'Charleston', 38.349497, -81.633294), \
                      ('Hawaii', 'Honolulu', 21.30895, -157.826182)]
 
-    new_road_map2 = [('Nebraska', 'Lincoln', 40.809868, -96.675345), \
+    b_road_map2 = [('Nebraska', 'Lincoln', 40.809868, -96.675345), \
                      ('Illinois', 'Springfield', 39.78325, -89.650373), \
                      ('Connecticut', 'Hartford', 41.767, -72.677), \
                      ('California', 'Sacramento', 38.555605, -121.468926), \
                      ('Rhode Island', 'Providence', 41.82355, -71.422132)]
 
-    pass
+    b_road_map3 = [('Maryland', 'Annapolis', 38.972945, -76.501157), \
+                     ('Nevada' , 'Carson City' , 39.160949 , -119.753877), \
+                     ('California' , 'Sacramento' , 38.555605 , -121.468926), \
+                     ('South Dakota' , 'Pierre' , 44.367966 , -100.336378)]
+
+    b_road_map4 = [('Utah', 'Salt Lake City', 40.7547, -111.892622), \
+                     ('Pennsylvania', 'Harrisburg', 40.269789, -76.875613), \
+                     ('Indiana', 'Indianapolis', 39.790942, -86.147685), \
+                     ('Colorado' , 'Denver' , 39.7391667 , -104.984167), \
+                     ('Missouri' , 'Jefferson City' , 38.572954 , -92.189283)]
+
+
 
 def test_shift_cities():
     pass

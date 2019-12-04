@@ -4,7 +4,7 @@ def read_cities(file_name):
         print(road_map)
         return road_map
 
-read_cities('city-data.txt')
+
 def print_cities(road_map):
 
     for item in road_map:
@@ -31,8 +31,7 @@ def compute_total_distance(road_map):
         distance = distance + sqrt(((p1-q1) ** 2) + ((p2-q2) ** 2))
         count += 1
 
-    print(distance)
-    return(distance)
+    return distance
 
 
 def swap_cities(road_map, index1, index2):
