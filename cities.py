@@ -1,11 +1,10 @@
 def read_cities(file_name):
-
     with open(file_name) as road_map:
         road_map = [tuple(element.rstrip().split("\t")) for element in road_map]
         print(road_map)
         return road_map
 
-
+read_cities('city-data.txt')
 def print_cities(road_map):
 
     for item in road_map:
@@ -48,12 +47,15 @@ def swap_cities(road_map, index1, index2):
     and handle this case correctly.
     """
 
+
+
 def shift_cities(road_map):
     """
     For every index i in the `road_map`, the city at the position i moves
     to the position i+1. The city at the last position moves to the position
     0. Return the new road map. 
     """
+    pass
 
 def find_best_cycle(road_map):
     """
