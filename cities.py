@@ -1,3 +1,14 @@
+import random
+import math
+
+
+class City:
+    def __init__(self, name, latitude, longitude):
+        self.name = name
+        self.lat = latitude
+        self.long = longitude
+
+
 def read_cities(file_name):
     with open(file_name) as road_map:
         road_map = [tuple(element.rstrip().split("\t")) for element in road_map]
@@ -6,16 +17,13 @@ def read_cities(file_name):
 
 
 def print_cities(road_map):
-
     for item in road_map:
-        subindex_a = item[2].find(".") + 3
-        subindex_b = item[3].find(".") + 3
-        print(item[0], item[1], item[2][:subindex_a], item[3][:subindex_b])
+        subindex_a = item[-2].find(".") + 3
+        subindex_b = item[-1].find(".") + 3
+        print(item[0], item[-2][:subindex_a], item[-1][:subindex_b])
 
 
 def compute_total_distance(road_map):
-
-    from math import sqrt
     distance = 0
     count = 1
 
@@ -28,10 +36,13 @@ def compute_total_distance(road_map):
         else:
             q1 = road_map[0][2]
             q2 = road_map[0][3]
-        distance = distance + sqrt(((p1-q1) ** 2) + ((p2-q2) ** 2))
+        distance = distance + math.sqrt(((p1-q1) ** 2) + ((p2-q2) ** 2))
         count += 1
-
     return distance
+
+
+def euclidean_distance(coord_a, coord_b):
+    return math.sqrt(math.pow(coord_a[0] - coord_b[0], 2) + math.pow(coord_a[1] - coord_b[1], 2))
 
 
 def swap_cities(road_map, index1, index2):
