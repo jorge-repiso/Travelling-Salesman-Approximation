@@ -3,24 +3,31 @@ import math
 
 
 class City:
-    def __init__(self, name, latitude, longitude):
+    def __init__(self, state, name, latitude, longitude):
+        self.state = state
         self.name = name
-        self.lat = latitude
-        self.long = longitude
+        self.latitude = latitude
+        self.longitude = longitude
 
 
 def read_cities(file_name):
     with open(file_name) as road_map:
         road_map = [tuple(element.rstrip().split("\t")) for element in road_map]
-        print(road_map)
         return road_map
 
 
 def print_cities(road_map):
+    c = "City"
+    s = "State"
+    lat = "Latitude"
+    long = "Longitude"
+    header = f'{c:^15}|{s:^15}|{lat:^15}|{long:^15}'
+
+    print(f'{"-" * len(header)}')
+    print(f'{header}')
+    print(f'{"-" * len(header)}')
     for item in road_map:
-        subindex_a = item[-2].find(".") + 3
-        subindex_b = item[-1].find(".") + 3
-        print(item[0], item[-2][:subindex_a], item[-1][:subindex_b])
+        print(f'{item[1]:<15} {item[0]:<15} {item[2][:5]:^15} {item[3][:6]:^15}')
 
 
 def compute_total_distance(road_map):
@@ -63,7 +70,7 @@ def shift_cities(road_map):
     """
     For every index i in the `road_map`, the city at the position i moves
     to the position i+1. The city at the last position moves to the position
-    0. Return the new road map. 
+    0. Return the new road map.
     """
     pass
 
