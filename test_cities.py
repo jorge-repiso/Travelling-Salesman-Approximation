@@ -83,25 +83,25 @@ def test_shift_cities():
                    ('Oregon', 'Salem', 44.931109, -123.029159),
                    ('Wisconsin', 'Madison', 43.074722, -89.384444)]
 
-    assert test_shift_cities(c_road_map1) == [('Alaska', 'Juneau', 58.301935, -134.41974),
+    assert shift_cities(c_road_map1) == [('Alaska', 'Juneau', 58.301935, -134.41974),
                                               ('Idaho', 'Boise', 43.613739, -116.237651),
                                               ('California', 'Sacramento', 38.555605, -121.468926),
                                               ('Rhode Island', 'Providence', 41.82355, -71.422132),
                                               ('Utah', 'Salt Lake City', 40.7547, -111.892622)]
 
-    assert test_shift_cities(c_road_map2) == [('Arkansas', 'Little Rock', 34.736009, -92.331122),
+    assert shift_cities(c_road_map2) == [('Arkansas', 'Little Rock', 34.736009, -92.331122),
                                               ('Georgia', 'Atlanta', 33.76, -84.39),
                                               ('New York', 'Albany', 42.659829, -73.781339),
                                               ('Pennsylvania', 'Harrisburg', 40.269789, -76.875613),
                                               ('New Hampshire', 'Concord', 43.220093, -71.549127)]
 
-    assert test_shift_cities(c_road_map3) == [('Wyoming', 'Cheyenne', 41.145548, -104.802042),
+    assert shift_cities(c_road_map3) == [('Wyoming', 'Cheyenne', 41.145548, -104.802042),
                                               ('Tennessee', 'Nashville', 36.165, -86.784),
                                               ('New Mexico', 'Santa Fe', 35.667231, -105.964575),
                                               ('Illinois', 'Springfield', 39.78325, -89.650373),
                                               ('Nevada', 'Carson City', 39.160949, -119.753877)]
 
-    assert test_shift_cities(c_road_map4) == [('Wisconsin', 'Madison', 43.074722, -89.384444),
+    assert shift_cities(c_road_map4) == [('Wisconsin', 'Madison', 43.074722, -89.384444),
                                               ('Montana', 'Helana', 46.595805, -112.027031),
                                               ('Michigan', 'Lansing', 42.7335, -84.5467),
                                               ('Florida', 'Tallahassee', 30.4518, -84.27277),

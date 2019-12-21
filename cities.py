@@ -1,6 +1,6 @@
 import random
 import math
-
+import copy
 
 class City:
     def __init__(self, state, name, latitude, longitude):
@@ -64,16 +64,16 @@ def swap_cities(road_map, index1, index2):
     Allow for the possibility that `index1=index2`,
     and handle this case correctly.
     """
-
+    pass
 
 
 def shift_cities(road_map):
-    """
-    For every index i in the `road_map`, the city at the position i moves
-    to the position i+1. The city at the last position moves to the position
-    0. Return the new road map.
-    """
-    pass
+    new_road_map = copy.deepcopy(road_map)
+    last_element = new_road_map.pop()
+    new_road_map.insert(0, last_element)
+
+    return new_road_map
+
 
 def find_best_cycle(road_map):
     """
@@ -84,6 +84,7 @@ def find_best_cycle(road_map):
     """
     pass
 
+
 def print_map(road_map):
     """
     Prints, in an easily understandable format, the cities and 
@@ -92,12 +93,14 @@ def print_map(road_map):
     """
     pass
 
+
 def main():
     """
     Reads in, and prints out, the city data, then creates the "best"
     cycle and prints it out.
     """
     pass
+
 
 if __name__ == "__main__": #keep this in
     main()
