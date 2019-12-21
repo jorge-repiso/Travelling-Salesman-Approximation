@@ -48,8 +48,9 @@ def compute_total_distance(road_map):
     return distance
 
 
-def euclidean_distance(coord_a, coord_b):
-    return math.sqrt(math.pow(coord_a[0] - coord_b[0], 2) + math.pow(coord_a[1] - coord_b[1], 2))
+# (REFACTOR) make compute_total_distance recursive using the function below
+# def euclidean_distance(coord_a, coord_b):
+   # return math.sqrt(math.pow(coord_a[0] - coord_b[0], 2) + math.pow(coord_a[1] - coord_b[1], 2))
 
 
 def swap_cities(road_map, index1, index2):
