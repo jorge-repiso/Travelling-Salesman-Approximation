@@ -1,6 +1,6 @@
-import random
-import math
 import copy
+import math
+
 
 class City:
     def __init__(self, state, name, latitude, longitude):
@@ -43,14 +43,14 @@ def compute_total_distance(road_map):
         else:
             q1 = road_map[0][2]
             q2 = road_map[0][3]
-        distance = distance + math.sqrt(((p1-q1) ** 2) + ((p2-q2) ** 2))
+        distance = distance + math.sqrt(((p1 - q1) ** 2) + ((p2 - q2) ** 2))
         count += 1
     return distance
 
 
 # (REFACTOR) make compute_total_distance recursive using the function below
 # def euclidean_distance(coord_a, coord_b):
-   # return math.sqrt(math.pow(coord_a[0] - coord_b[0], 2) + math.pow(coord_a[1] - coord_b[1], 2))
+# return math.sqrt(math.pow(coord_a[0] - coord_b[0], 2) + math.pow(coord_a[1] - coord_b[1], 2))
 
 
 def swap_cities(road_map, index1, index2):
@@ -64,7 +64,12 @@ def swap_cities(road_map, index1, index2):
     Allow for the possibility that `index1=index2`,
     and handle this case correctly.
     """
-    pass
+    new_road_map = copy.deepcopy(road_map)
+
+    if index1 == index2:
+        return new_road_map
+    else:
+        new_road_map[index1], new_road_map[index2] = new_road_map[index2], new_road_map[index1]
 
 
 def shift_cities(road_map):
@@ -102,5 +107,5 @@ def main():
     pass
 
 
-if __name__ == "__main__": #keep this in
+if __name__ == "__main__":  # keep this in
     main()

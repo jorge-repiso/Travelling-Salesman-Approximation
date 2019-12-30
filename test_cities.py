@@ -56,7 +56,58 @@ def test_swap_cities():
                    ('Colorado', 'Denver', 39.7391667, -104.984167),
                    ('Missouri', 'Jefferson City', 38.572954, -92.189283)]
 
-    pass
+    assert swap_cities(b_road_map1, 0, 2) == [("Minnesota", "Saint Paul", 44.95, -93.094),
+                                              ("Delaware", "Dover", 39.161921, -75.526755),
+                                              ("Kentucky", "Frankfort", 38.197274, -84.86311),
+                                              ('West Virginia', 'Charleston', 38.349497, -81.633294),
+                                              ('Hawaii', 'Honolulu', 21.30895, -157.826182)]
+# 18.496215 + 9.386057 + 3.233401 + 78.075197 + 68.914111
+
+    assert swap_cities(b_road_map2, 1, 2) == [('Nebraska', 'Lincoln', 40.809868, -96.675345),
+                                              ('Connecticut', 'Hartford', 41.767, -72.677),
+                                              ('Illinois', 'Springfield', 39.78325, -89.650373),
+                                              ('California', 'Sacramento', 38.555605, -121.468926),
+                                              ('Rhode Island', 'Providence', 41.82355, -71.422132)]
+
+
+    assert swap_cities(b_road_map3, 1, 3) == [('Maryland', 'Annapolis', 38.972945, -76.501157),
+                                              ('South Dakota', 'Pierre', 44.367966, -100.336378),
+                                              ('California', 'Sacramento', 38.555605, -121.468926),
+                                              ('Nevada', 'Carson City', 39.160949, -119.753877)]
+
+
+    assert swap_cities(b_road_map4, 0, 4) == [('Missouri', 'Jefferson City', 38.572954, -92.189283),
+                                              ('Pennsylvania', 'Harrisburg', 40.269789, -76.875613),
+                                              ('Indiana', 'Indianapolis', 39.790942, -86.147685),
+                                              ('Colorado', 'Denver', 39.7391667, -104.984167),
+                                              ('Utah', 'Salt Lake City', 40.7547, -111.892622)]
+
+
+    assert swap_cities(b_road_map1, 4, 4) == [("Kentucky", "Frankfort", 38.197274, -84.86311),
+                                              ("Delaware", "Dover", 39.161921, -75.526755),
+                                              ("Minnesota", "Saint Paul", 44.95, -93.094),
+                                              ('West Virginia', 'Charleston', 38.349497, -81.633294),
+                                              ('Hawaii', 'Honolulu', 21.30895, -157.826182)]
+
+    assert swap_cities(b_road_map3, 2, 0) == [('California', 'Sacramento', 38.555605, -121.468926),
+                                              ('Nevada', 'Carson City', 39.160949, -119.753877),
+                                              ('Maryland', 'Annapolis', 38.972945, -76.501157),
+                                              ('South Dakota', 'Pierre', 44.367966, -100.336378)]
+
+
+    assert swap_cities(b_road_map2, 4, 0) == [('Rhode Island', 'Providence', 41.82355, -71.422132),
+                                              ('Illinois', 'Springfield', 39.78325, -89.650373),
+                                              ('Connecticut', 'Hartford', 41.767, -72.677),
+                                              ('California', 'Sacramento', 38.555605, -121.468926),
+                                              ('Nebraska', 'Lincoln', 40.809868, -96.675345)]
+
+
+    assert swap_cities(b_road_map4, 2, 2) == [('Utah', 'Salt Lake City', 40.7547, -111.892622),
+                                              ('Pennsylvania', 'Harrisburg', 40.269789, -76.875613),
+                                              ('Indiana', 'Indianapolis', 39.790942, -86.147685),
+                                              ('Colorado', 'Denver', 39.7391667, -104.984167),
+                                              ('Missouri', 'Jefferson City', 38.572954, -92.189283)]
+
 
 def test_shift_cities():
     c_road_map1 = [('Idaho', 'Boise', 43.613739, -116.237651),
@@ -84,28 +135,29 @@ def test_shift_cities():
                    ('Wisconsin', 'Madison', 43.074722, -89.384444)]
 
     assert shift_cities(c_road_map1) == [('Alaska', 'Juneau', 58.301935, -134.41974),
-                                              ('Idaho', 'Boise', 43.613739, -116.237651),
-                                              ('California', 'Sacramento', 38.555605, -121.468926),
-                                              ('Rhode Island', 'Providence', 41.82355, -71.422132),
-                                              ('Utah', 'Salt Lake City', 40.7547, -111.892622)]
+                                         ('Idaho', 'Boise', 43.613739, -116.237651),
+                                         ('California', 'Sacramento', 38.555605, -121.468926),
+                                         ('Rhode Island', 'Providence', 41.82355, -71.422132),
+                                         ('Utah', 'Salt Lake City', 40.7547, -111.892622)]
 
     assert shift_cities(c_road_map2) == [('Arkansas', 'Little Rock', 34.736009, -92.331122),
-                                              ('Georgia', 'Atlanta', 33.76, -84.39),
-                                              ('New York', 'Albany', 42.659829, -73.781339),
-                                              ('Pennsylvania', 'Harrisburg', 40.269789, -76.875613),
-                                              ('New Hampshire', 'Concord', 43.220093, -71.549127)]
+                                         ('Georgia', 'Atlanta', 33.76, -84.39),
+                                         ('New York', 'Albany', 42.659829, -73.781339),
+                                         ('Pennsylvania', 'Harrisburg', 40.269789, -76.875613),
+                                         ('New Hampshire', 'Concord', 43.220093, -71.549127)]
 
     assert shift_cities(c_road_map3) == [('Wyoming', 'Cheyenne', 41.145548, -104.802042),
-                                              ('Tennessee', 'Nashville', 36.165, -86.784),
-                                              ('New Mexico', 'Santa Fe', 35.667231, -105.964575),
-                                              ('Illinois', 'Springfield', 39.78325, -89.650373),
-                                              ('Nevada', 'Carson City', 39.160949, -119.753877)]
+                                         ('Tennessee', 'Nashville', 36.165, -86.784),
+                                         ('New Mexico', 'Santa Fe', 35.667231, -105.964575),
+                                         ('Illinois', 'Springfield', 39.78325, -89.650373),
+                                         ('Nevada', 'Carson City', 39.160949, -119.753877)]
 
     assert shift_cities(c_road_map4) == [('Wisconsin', 'Madison', 43.074722, -89.384444),
-                                              ('Montana', 'Helana', 46.595805, -112.027031),
-                                              ('Michigan', 'Lansing', 42.7335, -84.5467),
-                                              ('Florida', 'Tallahassee', 30.4518, -84.27277),
-                                              ('Oregon', 'Salem', 44.931109, -123.029159)]
+                                         ('Montana', 'Helana', 46.595805, -112.027031),
+                                         ('Michigan', 'Lansing', 42.7335, -84.5467),
+                                         ('Florida', 'Tallahassee', 30.4518, -84.27277),
+                                         ('Oregon', 'Salem', 44.931109, -123.029159)]
+
 
 def test_find_best_cycle():
     pass
