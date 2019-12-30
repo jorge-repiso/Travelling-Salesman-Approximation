@@ -1,5 +1,6 @@
 import copy
 import math
+import random
 
 
 class City:
@@ -70,7 +71,23 @@ def find_best_cycle(road_map):
     After `10000` swaps/shifts, return the best cycle found so far.
     Use randomly generated indices for swapping.
     """
-    pass
+    best_cycle = road_map
+    fastest_distance = compute_total_distance(road_map)
+
+    for i in range(9999):
+        random_value1 = random.randint(0, len(road_map))
+        random_value2 = random.randint(0, len(road_map))
+
+        shift_cities(road_map)
+        swap_cities(road_map,random_value1, random_value2)
+
+        if road_map[1] < fastest_distance:
+            best_cycle = road_map[0]
+            fastest_distance = road_map[1]
+
+    print(best_cycle)
+    return best_cycle
+
 
 
 def print_map(road_map):
