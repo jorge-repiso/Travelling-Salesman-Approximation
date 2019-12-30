@@ -151,10 +151,3 @@ def test_shift_cities():
                                          ('Florida', 'Tallahassee', 30.4518, -84.27277),
                                          ('Oregon', 'Salem', 44.931109, -123.029159)]
 
-
-def test_find_best_cycle():
-    pass
-
-
-def test_print_map():
-    pass

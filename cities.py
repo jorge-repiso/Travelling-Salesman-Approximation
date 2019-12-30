@@ -3,14 +3,6 @@ import math
 import random
 
 
-class City:
-    def __init__(self, state, name, latitude, longitude):
-        self.state = state
-        self.name = name
-        self.latitude = latitude
-        self.longitude = longitude
-
-
 def read_cities(file_name):
     with open(file_name) as road_map:
         road_map = [tuple(element.rstrip().split("\t")) for element in road_map]
@@ -32,22 +24,18 @@ def compute_total_distance(road_map):
     count = 1
 
     for city in road_map:
-        p1 = city[2]
-        p2 = city[3]
+        lat1 = float(city[2])
+        long1 = float(city[3])
         if city != road_map[-1]:
-            q1 = road_map[count][2]
-            q2 = road_map[count][3]
+            lat2 = float(road_map[count][2])
+            long2 = float(road_map[count][3])
         else:
-            q1 = road_map[0][2]
-            q2 = road_map[0][3]
-        distance = distance + math.sqrt(((p1 - q1) ** 2) + ((p2 - q2) ** 2))
+            lat2 = float(road_map[0][2])
+            long2 = float(road_map[0][3])
+        distance = distance + math.sqrt(math.pow((lat1 - lat2), 2) + math.pow((long1 - long2), 2))
         count += 1
+
     return distance
-
-
-# (REFACTOR) make compute_total_distance recursive using the function below
-# def euclidean_distance(coord_a, coord_b):
-# return math.sqrt(math.pow(coord_a[0] - coord_b[0], 2) + math.pow(coord_a[1] - coord_b[1], 2))
 
 
 def swap_cities(road_map, index1, index2):
@@ -71,23 +59,19 @@ def find_best_cycle(road_map):
     After `10000` swaps/shifts, return the best cycle found so far.
     Use randomly generated indices for swapping.
     """
-    best_cycle = road_map
-    fastest_distance = compute_total_distance(road_map)
+    best_cycle = road_map, compute_total_distance(road_map)
 
-    for i in range(9999):
-        random_value1 = random.randint(0, len(road_map))
-        random_value2 = random.randint(0, len(road_map))
+    for i in range(10000):
+        random_value1 = random.randint(0, len(road_map)-1)
+        random_value2 = random.randint(0, len(road_map)-1)
 
-        shift_cities(road_map)
-        swap_cities(road_map,random_value1, random_value2)
+        new_map = shift_cities(best_cycle[0])
+        new_map = swap_cities(new_map, random_value1, random_value2)
 
-        if road_map[1] < fastest_distance:
-            best_cycle = road_map[0]
-            fastest_distance = road_map[1]
+        if new_map[1] < best_cycle[1]:
+            best_cycle = new_map
 
-    print(best_cycle)
     return best_cycle
-
 
 
 def print_map(road_map):
@@ -104,8 +88,7 @@ def main():
     Reads in, and prints out, the city data, then creates the "best"
     cycle and prints it out.
     """
-    pass
-
+    find_best_cycle(read_cities('city-data.txt'))
 
 if __name__ == "__main__":  # keep this in
     main()
