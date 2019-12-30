@@ -17,11 +17,7 @@ def read_cities(file_name):
 
 
 def print_cities(road_map):
-    c = "City"
-    s = "State"
-    lat = "Latitude"
-    long = "Longitude"
-    header = f'{c:^15}|{s:^15}|{lat:^15}|{long:^15}'
+    header = f'{"City":^15}|{"State":^15}|{"Latitude":^15}|{"Longitude":^15}'
 
     print(f'{"-" * len(header)}')
     print(f'{header}')
@@ -54,22 +50,9 @@ def compute_total_distance(road_map):
 
 
 def swap_cities(road_map, index1, index2):
-    """
-    Take the city at location `index` in the `road_map`, and the 
-    city at location `index2`, swap their positions in the `road_map`, 
-    compute the new total distance, and return the tuple 
-
-        (new_road_map, new_total_distance)
-
-    Allow for the possibility that `index1=index2`,
-    and handle this case correctly.
-    """
     new_road_map = copy.deepcopy(road_map)
-
-    if index1 == index2:
-        return new_road_map
-    else:
-        new_road_map[index1], new_road_map[index2] = new_road_map[index2], new_road_map[index1]
+    new_road_map[index1], new_road_map[index2] = new_road_map[index2], new_road_map[index1]
+    return new_road_map, compute_total_distance(new_road_map)
 
 
 def shift_cities(road_map):
