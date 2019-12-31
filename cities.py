@@ -10,13 +10,14 @@ def read_cities(file_name):
 
 
 def print_cities(road_map):
-    header = f'{"City":^15}|{"State":^15}|{"Latitude":^15}|{"Longitude":^15}'
+    header = f'{"City":^20}|{"State":^20}|{"Latitude":^15}|{"Longitude":^15}'
 
     print(f'{"-" * len(header)}')
     print(f'{header}')
     print(f'{"-" * len(header)}')
     for item in road_map:
-        print(f'{item[1]:<15} {item[0]:<15} {item[2][:5]:^15} {item[3][:6]:^15}')
+        print(f'{item[1]:<20} {item[0]:<20} {item[2][:5]:^15} {item[3][:6]:^15}')
+    print(f'{"-" * len(header)}')
 
 
 def distance_two_cities(x1, x2, y1, y2):
@@ -66,7 +67,7 @@ def find_best_cycle(road_map):
 
 
 def print_map(road_map):
-    header = f'{"City":^15}|{"State":^15}|{"Distance":^15}'
+    header = f'{"City index":^15}|{"City":^20}|{"State":^20}|{"Distance":^15}'
     print(f'{"-" * len(header)}')
     print(f'{header}')
     print(f'{"-" * len(header)}')
@@ -81,10 +82,10 @@ def print_map(road_map):
         else:
             lat2 = float(road_map[0][2])
             long2 = float(road_map[0][3])
-        distance = round(distance_two_cities(lat1, long1, lat2, long2), 2)
+        distance = str(distance_two_cities(lat1, long1, lat2, long2))
+        print(f'{count:^15} {city[1]:<20} {city[0]:<20} {distance[:5]:^15}')
         count += 1
-        print(f'{city[1]:<15} {city[0]:<15} {"+"} {distance: <15}')
-
+    print(f'{"-" * len(header)}')
     print()
     print("Total distance: ", compute_total_distance(road_map))
 
@@ -94,6 +95,11 @@ def main():
     Reads in, and prints out, the city data, then creates the "best"
     cycle and prints it out.
     """
+    print_cities(read_cities('city-data.txt'))
+    print()
+    print("Loading best route:")
+    print()
+    print_map(find_best_cycle(read_cities('city-data.txt')))
 
 
 if __name__ == "__main__":  # keep this in
