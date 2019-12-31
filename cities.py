@@ -67,6 +67,7 @@ def find_best_cycle(road_map):
 
 
 def print_map(road_map):
+    print("Best cycle found:")
     header = f'{"City index":^15}|{"City":^20}|{"State":^20}|{"Distance":^15}'
     print(f'{"-" * len(header)}')
     print(f'{header}')
@@ -86,20 +87,16 @@ def print_map(road_map):
         print(f'{count:^15} {city[1]:<20} {city[0]:<20} {distance[:5]:^15}')
         count += 1
     print(f'{"-" * len(header)}')
-    print()
-    print("Total distance: ", compute_total_distance(road_map))
+    print("Total distance: ", round(compute_total_distance(road_map), 3))
 
 
 def main():
-    """
-    Reads in, and prints out, the city data, then creates the "best"
-    cycle and prints it out.
-    """
-    print_cities(read_cities('city-data.txt'))
+    roadmap = read_cities(input("Enter the name of your file: "))
+
+    print_cities(roadmap)
     print()
-    print("Loading best route:")
     print()
-    print_map(find_best_cycle(read_cities('city-data.txt')))
+    print_map(find_best_cycle(roadmap))
 
 
 if __name__ == "__main__":  # keep this in
