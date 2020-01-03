@@ -1,7 +1,7 @@
 import copy
 import math
 import random
-
+import matplotlib.pyplot as plt
 
 def read_cities(file_name):
     """
@@ -123,14 +123,26 @@ def print_map(road_map):
     print("Total distance: ", round(compute_total_distance(road_map), 3))
 
 
+def visualise(road_map):
+    coordinates = []
+    for element in road_map:
+        vector = float(element[2]), float(element[3])
+        coordinates.append(vector)
+
+    plt.plot(*zip(coordinates))
+    plt.show()
+
+
 def main():
     roadmap = read_cities(input("Enter the name of your file: "))
 
     print_cities(roadmap)
     print()
     print()
-    print_map(find_best_cycle(roadmap))
 
+    best_cycle = find_best_cycle(roadmap)
+    print_map(best_cycle)
+    visualise(best_cycle)
 
 if __name__ == "__main__":  # keep this in
     main()
