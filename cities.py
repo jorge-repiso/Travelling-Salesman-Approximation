@@ -4,12 +4,19 @@ import random
 
 
 def read_cities(file_name):
+    """
+    :param file_name: Inputs a .txt file
+    :return: returns a road_map in tuple (state, city, latitude, longitude)
+    """
     with open(file_name) as road_map:
         road_map = [tuple(element.rstrip().split("\t")) for element in road_map]
         return road_map
 
 
 def print_cities(road_map):
+    """
+    :param road_map: Inputs a road_map and prints it out in a user friendly format
+    """
     header = f'{"City":^20}|{"State":^20}|{"Latitude":^15}|{"Longitude":^15}'
 
     print(f'{"-" * len(header)}')
@@ -21,10 +28,21 @@ def print_cities(road_map):
 
 
 def distance_two_cities(x1, x2, y1, y2):
+    """
+    :param x1: Latitude of vector1
+    :param x2: Longitude of vector1
+    :param y1: Latitude of vector2
+    :param y2: Longitude of vector2
+    :return: Euclidean distance between two vectors
+    """
     return math.sqrt(math.pow((x1 - y1), 2) + math.pow((x2 - y2), 2))
 
 
 def compute_total_distance(road_map):
+    """
+    :param road_map: Inputs the road_map
+    :return: Returns the distance between all the cities in the order they are read. Last city joins with the first city
+    """
     distance = 0
     count = 1
     for city in road_map:
@@ -42,12 +60,20 @@ def compute_total_distance(road_map):
 
 
 def swap_cities(road_map, index1, index2):
+    """
+    Swaps cities at index1 and index2.
+    :return: a tuple with the new roadmap and a computation of the total distance
+    """
     new_road_map = copy.deepcopy(road_map)
     new_road_map[index1], new_road_map[index2] = new_road_map[index2], new_road_map[index1]
     return new_road_map, compute_total_distance(new_road_map)
 
 
 def shift_cities(road_map):
+    """
+    Moves all cities in the list one position to the right (i + 1). The last element in the list becomes the first
+    :return: Returns a new roadmap
+    """
     new_road_map = copy.deepcopy(road_map)
     last_element = new_road_map.pop()
     new_road_map.insert(0, last_element)
@@ -55,6 +81,10 @@ def shift_cities(road_map):
 
 
 def find_best_cycle(road_map):
+    """
+    Tries 10000 shifts and 10000 swaps to find an approximation of the shortest cycle possible.
+    :return: a new roadmap with the cities reordered to the shortest cycle found.
+    """
     best_cycle = road_map, compute_total_distance(road_map)
     for i in range(10000):
         random_value1 = random.randint(0, len(road_map) - 1)
@@ -67,6 +97,9 @@ def find_best_cycle(road_map):
 
 
 def print_map(road_map):
+    """
+    :param road_map: Inputs a road_map and prints it out in a user friendly format along with the total distance value
+    """
     print("Best cycle found:")
     header = f'{"City index":^15}|{"City":^20}|{"State":^20}|{"Distance":^15}'
     print(f'{"-" * len(header)}')
