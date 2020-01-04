@@ -3,6 +3,7 @@ import math
 import random
 import matplotlib.pyplot as plt
 
+
 def read_cities(file_name):
     """
     :param file_name: Inputs a .txt file
@@ -129,7 +130,16 @@ def visualise(road_map):
         vector = float(element[2]), float(element[3])
         coordinates.append(vector)
 
-    plt.plot(*zip(coordinates))
+    plt.plot(*zip(*coordinates),
+             linewidth=0.75,
+             marker='o',
+             markerfacecolor='r',
+             markeredgecolor='r')
+
+    for spine in plt.gca().spines.values():
+        spine.set_visible(False)
+    plt.yticks([])
+    plt.xticks([])
     plt.show()
 
 
@@ -143,6 +153,7 @@ def main():
     best_cycle = find_best_cycle(roadmap)
     print_map(best_cycle)
     visualise(best_cycle)
+
 
 if __name__ == "__main__":  # keep this in
     main()
