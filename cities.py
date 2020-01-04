@@ -2,17 +2,19 @@ import copy
 import math
 import random
 import matplotlib.pyplot as plt
-
+import sys
 
 def read_cities(file_name):
     """
     :param file_name: Inputs a .txt file
     :return: returns a road_map in tuple (state, city, latitude, longitude)
     """
-    with open(file_name) as road_map:
-        road_map = [tuple(element.rstrip().split("\t")) for element in road_map]
-        return road_map
-
+    try:
+        with open(file_name) as road_map:
+            road_map = [tuple(element.rstrip().split("\t")) for element in road_map]
+            return road_map
+    except Exception:
+        sys.exit("This file does not exist. Please enter a valid file name.")
 
 def print_cities(road_map):
     """
@@ -125,16 +127,25 @@ def print_map(road_map):
 
 
 def visualise(road_map):
-    coordinates = []
+    longitudes = []
+    latitudes = []
+    city_name = []
     for element in road_map:
-        vector = float(element[2]), float(element[3])
-        coordinates.append(vector)
+        city_name.append(element[1])
+        latitudes.append(float(element[3]))
+        longitudes.append(float(element[2]))
 
-    plt.plot(*zip(*coordinates),
+    plt.plot(latitudes,longitudes,
              linewidth=0.75,
              marker='o',
              markerfacecolor='r',
              markeredgecolor='r')
+
+    count = 0
+    for x,y in zip(latitudes,longitudes):
+        plt.annotate(city_name[count],(x,y))
+        count += 1
+
 
     for spine in plt.gca().spines.values():
         spine.set_visible(False)
