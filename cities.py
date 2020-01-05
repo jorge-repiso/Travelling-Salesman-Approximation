@@ -9,6 +9,7 @@ def read_cities(file_name):
     """
     :param file_name: Inputs a .txt file
     :return: returns a road_map in tuple (state, city, latitude, longitude)
+    Will exit the programme if the input is wrong.
     """
     try:
         with open(file_name) as road_map:
@@ -67,7 +68,7 @@ def compute_total_distance(road_map):
 def swap_cities(road_map, index1, index2):
     """
     Swaps cities at index1 and index2.
-    :return: a tuple with the new roadmap and a computation of the total distance
+    :return: a tuple with the new road_map and a computation of the total distance
     """
     new_road_map = copy.deepcopy(road_map)
     new_road_map[index1], new_road_map[index2] = new_road_map[index2], new_road_map[index1]
@@ -77,7 +78,7 @@ def swap_cities(road_map, index1, index2):
 def shift_cities(road_map):
     """
     Moves all cities in the list one position to the right (i + 1). The last element in the list becomes the first
-    :return: Returns a new roadmap
+    :return: Returns a new road_map
     """
     new_road_map = copy.deepcopy(road_map)
     last_element = new_road_map.pop()
@@ -88,7 +89,7 @@ def shift_cities(road_map):
 def find_best_cycle(road_map):
     """
     Tries 10000 shifts and 10000 swaps to find an approximation of the shortest cycle possible.
-    :return: a new roadmap with the cities reordered to the shortest cycle found.
+    :return: a new road_map with the cities reordered to the shortest cycle found.
     """
     best_cycle = road_map, compute_total_distance(road_map)
     for i in range(10000):
@@ -129,6 +130,9 @@ def print_map(road_map):
 
 
 def visualise(road_map):
+    """
+    :param: takes a road_map as input and displays the cities in such map in a grid plot
+    """
     longitudes = []
     latitudes = []
     city_name = []
@@ -167,5 +171,5 @@ def main():
     visualise(best_cycle)
 
 
-if __name__ == "__main__":  # keep this in
+if __name__ == "__main__":
     main()
